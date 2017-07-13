@@ -202,7 +202,7 @@ def main(param):
 
     proverka(data)
 
-    gimp(test.OP, test.TB)
+    graph(test.OP, test.TB)
     #seaborn.distplot(test.OP)
     #plt.show()
 
@@ -216,18 +216,15 @@ def proverka(data):
             print(box + ": Посчтитан не верно")
     print("Проверка окончена")
 
-def gimp(OP, TB):
+def graph(OP, TB):
     f, ax = plt.subplots(2,1, sharex=True)
-    # подпишем каждый график
+    
     ax[0].set_title("Операционная прибыль")
     ax[1].set_title('Точка езубыточности')
-    # а также ось абсцисс. 
-    # она будет расположена в низу нижнего графика, поэтому добавим подпись только туда
-    # ax[1].set_xlabel('тыс.руб.')
-    # явно укажем в параметре ax в каком месте какой график изображать
+    
     seaborn.distplot(TB, ax=ax[1])
     seaborn.distplot(OP, ax=ax[0])
-    # озаглавим всю картинку, а чтобы текст не сливался с остальными подписями сделаем его шрифтом покрупнее
+    
     plt.suptitle("Text", size=16)
     plt.show()
     
